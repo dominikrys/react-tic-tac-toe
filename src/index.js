@@ -14,6 +14,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square
+        key={i}
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
@@ -21,25 +22,22 @@ class Board extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+    const boardSize = 3;
+    let board = [];
+
+    for (let rowIdx = 0; rowIdx < boardSize; rowIdx++) {
+      let row = [];
+      for (let colIdx = 0; colIdx < boardSize; colIdx++) {
+        row.push(this.renderSquare(rowIdx * boardSize + colIdx));
+      }
+      board.push(
+        <div key={rowIdx} className="board-row">
+          {row}
         </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
+      );
+    }
+
+    return <div>{board}</div>;
   }
 }
 
@@ -100,7 +98,7 @@ class Game extends React.Component {
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>
             {move === this.state.stepNumber ? <b>{desc}</b> : desc}
-          </button>Î
+          </button>
         </li>
       );
     });
