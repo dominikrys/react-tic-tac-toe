@@ -69,6 +69,7 @@ class Game extends React.Component {
       history: history.concat([
         {
           squares: squares,
+          lastClickedSquare: i,
         },
       ]),
       stepNumber: history.length,
@@ -89,7 +90,12 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      const lastCol = 1 + (step.lastClickedSquare % 3);
+      const lastRow = 1 + Math.floor(step.lastClickedSquare / 3);
+
+      const desc = move
+        ? `Go to move #${move} (${lastCol}, ${lastRow})`
+        : "Go to game start";
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
