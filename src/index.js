@@ -175,6 +175,13 @@ function calculateWinner(squares) {
     }
   }
 
+  if (squares.every((square) => square)) {
+    return {
+      winner: "Draw",
+      winLine: null,
+    };
+  }
+
   return {
     winner: null,
     winLine: null,
