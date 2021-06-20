@@ -7,7 +7,7 @@ The aim of this small project was to introduce myself to React.
 ## Build Instructions
 
 ```bash
-npm start
+yarn start
 ```
 
 Then access [http://localhost:3000/](http://localhost:3000/).
