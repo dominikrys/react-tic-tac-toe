@@ -6,6 +6,10 @@ The aim of this small project was to introduce myself to React and TypeScript.
 
 ## Build Instructions
 
+Make sure you have [npm](https://www.npmjs.com/) and [yarn](https://www.npmjs.com/package/yarn) installed.
+
+To run for development:
+
 ```bash
 yarn start
 ```
